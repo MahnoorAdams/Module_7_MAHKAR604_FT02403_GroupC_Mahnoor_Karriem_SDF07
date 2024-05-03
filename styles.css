@@ -1,23 +1,275 @@
-/* Base Styles */
-
 :root {
     font-size: 10px;
-}
-
-*,
-*::before,
-*::after {
+  }
+  
+  *,
+  *::before,
+  *::after {
     box-sizing: border-box;
-}
-
-body {
+  }
+  
+  html,
+  body {
+    margin: 0;
+    padding: 0;
+  }
+  
+  body {
     font-family: "Open Sans", Arial, sans-serif;
     min-height: 100vh;
     background-color: #fafafa;
     color: #262626;
     padding-bottom: 3rem;
-}
-
-img {
+  }
+  
+  img {
     display: block;
-}
+  }
+  
+  .content-container {
+    max-width: 950px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  /* Profile Section */
+  
+  .profile {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 16px;
+    margin: 32px 0;
+  }
+  
+  .profile-image > img {
+    border: 12px solid rgb(18, 107, 95);
+    border-radius: 50%;
+    height: 250px;
+    width: auto;
+  }
+  
+  /* Profile UserName && Setting */
+  .profile-content {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+  }
+  
+  .profile-user-settings {
+    display: flex;
+    align-items: flex-end;
+  }
+  
+  h1 {
+    font-size: 32px;
+    font-weight: 100;
+    margin: 0 16px 0 0;
+  }
+  
+  .profile-edit-btn {
+    display: flex;
+    align-items: center;
+    height: 10px;
+    font-weight: bold;
+    border: 1px solid grey;
+    border-radius: 4px;
+    padding: 1em 2em;
+    background: none;
+    margin-right: 8px;
+  }
+  
+  .profile-settings-btn {
+    border: none;
+    background: none;
+    font-size: 24px;
+  }
+  
+  /* Profile Stats */
+  
+  .profile-stats > ul {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    list-style: none;
+    font-size: 12px;
+    gap: 16px;
+  }
+  
+  li > span {
+    font-weight: bold;
+  }
+  
+  .profile-bio {
+    font-size: 15px;
+  }
+  
+  .profile-real-name {
+    font-weight: bold;
+  }
+  
+  /* Images */
+  .gallery {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    row-gap: 16px;
+    column-gap: 16px;
+  }
+  
+  .gallery-item {
+    width: 100%;
+    position: relative;
+    > img {
+      width: 100%;
+      height: 500px;
+    }
+  }
+  
+  /* Initially hide the text */
+  .visually-hidden,
+  .gallery-item-likes,
+  .gallery-item-comments {
+    visibility: hidden;
+    opacity: 0;
+  }
+  
+  .gallery-item-info {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #fff;
+    padding: 0;
+    font-size: 20px;
+    text-align: center;
+  
+    height: 100%;
+    width: 100%;
+  }
+  
+  /* Show the text on hover */
+  .gallery-item-info:hover {
+    content: "";
+    display: block;
+    background-color: rgba(0, 0, 0, 0.8);
+  
+    ul > li {
+      visibility: visible;
+      opacity: 1;
+    }
+  
+    .fa-play {
+      visibility: hidden;
+      opacity: 0;
+    }
+  }
+  
+  .gallery-item-info {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .gallery-item-info > ul {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  
+    display: flex;
+    list-style: none;
+  }
+  
+  /* Shows gallery item */
+  .gallery-item-type {
+    height: 0;
+  }
+  
+  .fa-clone::before {
+    position: absolute;
+    top: 0;
+    right: 0;
+    color: #fff;
+    padding: 10px 10px;
+    font-size: 20px;
+    text-align: center;
+    text-shadow: 0px 0px #000;
+  }
+  
+  .fa-play::before {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #fff;
+    font-size: 32px;
+    text-align: center;
+    text-shadow: 0px 0px #000;
+  }
+  
+  /* Loading Icon wonder how */
+  .loader {
+    margin: 16px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50px;
+    padding: 8px;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    background: #333;
+    --_m: conic-gradient(#0000 10%, #000), linear-gradient(#000 0 0) content-box;
+    -webkit-mask: var(--_m);
+    mask: var(--_m);
+    -webkit-mask-composite: source-out;
+    mask-composite: subtract;
+    animation: l3 1s infinite linear;
+  }
+  @keyframes l3 {
+    to {
+      transform: rotate(1turn);
+    }
+  }
+  
+  /* Mobile sizing */
+  @media only screen and (max-width: 600px) {
+    .content-container {
+      width: 100%;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .profile-image > img {
+      border: 6px solid rgb(18, 107, 95);
+      border-radius: 50%;
+      height: 150px;
+      width: auto;
+    }
+    .profile {
+      gap: 4px;
+    }
+    .profile-content {
+      gap: 8px;
+    }
+    h1 {
+      font-size: 16px;
+    }
+    .profile-edit-btn {
+      height: 10px;
+      padding: 1rem 2rem;
+    }
+  
+    .profile-settings-btn {
+      font-size: 16px;
+    }
+    .profile-bio {
+      font-size: 12px;
+    }
+    .gallery {
+      row-gap: 4px;
+      column-gap: 4px;
+    }
+    .gallery-item {
+      > img {
+        height: 250px;
+      }
+    }
+  }
